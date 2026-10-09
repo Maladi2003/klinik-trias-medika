@@ -10,11 +10,19 @@ use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\JanjiTemuController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ResepController;
+use App\Http\Controllers\SpesialisasiController;
 use App\Models\Jadwal;
 use App\Models\Layanan;
+use App\Models\Pasien;
+use App\Models\Dokter;
+use App\Models\JanjiTemu;
+use App\Models\Spesialisasi;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
+// --- RUTE PUBLIK / FRONTEND ---
 Route::get('/', function () {
     return view('frontend.beranda');
 });
@@ -22,12 +30,15 @@ Route::get('/', function () {
 Route::get('/buat-janji', [BookingController::class, 'create'])->name('booking.create');
 Route::post('/buat-janji', [BookingController::class, 'store'])->name('booking.store');
 
+// Rute Tampilan Bukti Booking & Download Invoice PDF
+Route::get('/booking/sukses/{id}', [BookingController::class, 'success'])->name('booking.success');
+Route::get('/booking/pdf/{id}', [BookingController::class, 'downloadPdf'])->name('booking.pdf');
+
 Route::get('/jadwal-dokter', function (Request $request) {
-    // 1. Mulai query dengan relasi dokter
     $query = Jadwal::with('dokter');
 
-    // 2. Filter berdasarkan Pencarian Cepat (nama atau keahlian)
-    if ($request->has('q') && $request->q != '') {
+    // 1. Pencarian Cepat (Nama Dokter / Spesialisasi)
+    if ($request->filled('q')) {
         $keyword = $request->q;
         $query->whereHas('dokter', function($q) use ($keyword) {
             $q->where('nama_dokter', 'like', '%' . $keyword . '%')
@@ -35,23 +46,27 @@ Route::get('/jadwal-dokter', function (Request $request) {
         });
     }
 
-    // 3. Filter berdasarkan Spesialisasi (dropdown/kategori cepat)
-    if ($request->has('spesialisasi') && $request->spesialisasi != '') {
-        $spesialis = $request->spesialisasi;
-        $query->whereHas('dokter', function($q) use ($spesialis) {
-            $q->where('spesialisasi', $spesialis);
+    // 2. Filter Spesialisasi Fleksibel
+    if ($request->filled('spesialisasi')) {
+        $spesialis = $request->spesialisasi; // Misal: "Dokter Umum" atau "Umum"
+        $clean = trim(str_replace(['Dokter', 'Poli'], '', $spesialis));
+
+        $query->whereHas('dokter', function($q) use ($spesialis, $clean) {
+            $q->where('spesialisasi', 'like', '%' . $spesialis . '%')
+              ->orWhere('spesialisasi', 'like', '%' . $clean . '%');
         });
     }
 
-    // 4. Filter berdasarkan Hari Praktik (dropdown)
-    if ($request->has('hari') && $request->hari != '') {
+    // 3. Filter Hari Praktik
+    if ($request->filled('hari')) {
         $query->where('hari', $request->hari);
     }
 
-    // 5. Ambil hasil akhirnya
     $jadwals = $query->get();
+    // Ambil seluruh spesialisasi resmi dari database admin
+    $spesialisasis = Spesialisasi::all();
 
-    return view('frontend.jadwal', compact('jadwals'));
+    return view('frontend.jadwal', compact('jadwals', 'spesialisasis'));
 })->name('jadwal');
 
 Route::get('/kontak', function () {
@@ -63,14 +78,12 @@ Route::get('/layanan-biaya', function () {
     return view('frontend.layanan', compact('layanans'));
 })->name('layanan');
 
+// --- RUTE PANEL ADMIN (PROTECTED AUTH) ---
 Route::get('/dashboard', function () {
-    // Mengambil data statistik secara real-time
-    $totalPasien = \App\Models\Pasien::count();
-    $totalDokter = \App\Models\Dokter::count();
-    $totalLayanan = \App\Models\Layanan::count();
-    
-    // Menghitung antrean khusus untuk tanggal hari ini
-    $antreanHariIni = \App\Models\JanjiTemu::whereDate('tanggal_berobat', \Carbon\Carbon::today())->count();
+    $totalPasien = Pasien::count();
+    $totalDokter = Dokter::count();
+    $totalLayanan = Layanan::count();
+    $antreanHariIni = JanjiTemu::whereDate('tanggal_berobat', Carbon::today())->count();
     
     return view('dashboard', compact('totalPasien', 'totalDokter', 'totalLayanan', 'antreanHariIni'));
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -79,6 +92,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
     Route::resource('dokter', DokterController::class);
     Route::resource('pasien', PasienController::class);
     Route::resource('jadwal', JadwalController::class);
@@ -88,7 +102,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('resep', ResepController::class);
     Route::resource('janji-temu', JanjiTemuController::class);
     Route::resource('layanan', LayananController::class);
-    Route::resource('spesialisasi', \App\Http\Controllers\SpesialisasiController::class);
+    Route::resource('spesialisasi', SpesialisasiController::class);
 });
 
 require __DIR__.'/auth.php';

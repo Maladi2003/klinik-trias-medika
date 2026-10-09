@@ -12,14 +12,27 @@
                 <form action="{{ route('layanan.store') }}" method="POST">
                     @csrf 
 
+                    <!-- Dropdown Pilih Spesialisasi / Poli -->
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Spesialisasi / Poliklinik</label>
+                        <select name="spesialisasi_id" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight" required>
+                            <option value="">-- Pilih Spesialisasi Poli --</option>
+                            @foreach($spesialisasis as $spec)
+                                <option value="{{ $spec->id }}" {{ old('spesialisasi_id') == $spec->id ? 'selected' : '' }}>
+                                    {{ $spec->nama_spesialisasi }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">Nama Layanan (Contoh: Suntik KB, Cabut Gigi)</label>
-                        <input type="text" name="nama_layanan" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" required>
+                        <input type="text" name="nama_layanan" value="{{ old('nama_layanan') }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" required>
                     </div>
 
                     <div class="mb-6">
                         <label class="block text-gray-700 text-sm font-bold mb-2">Estimasi Biaya (Rp)</label>
-                        <input type="number" name="estimasi_biaya" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" required min="0">
+                        <input type="number" name="estimasi_biaya" value="{{ old('estimasi_biaya') }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" required min="0">
                     </div>
 
                     <div class="flex items-center justify-between">

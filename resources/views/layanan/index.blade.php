@@ -18,6 +18,7 @@
                         <thead>
                             <tr class="bg-gray-100 border-b-2 border-gray-200">
                                 <th class="p-3 text-sm font-semibold tracking-wide">No</th>
+                                <th class="p-3 text-sm font-semibold tracking-wide">Spesialisasi / Poli</th>
                                 <th class="p-3 text-sm font-semibold tracking-wide">Nama Tindakan/Layanan</th>
                                 <th class="p-3 text-sm font-semibold tracking-wide">Estimasi Biaya</th>
                                 <th class="p-3 text-sm font-semibold tracking-wide text-center">Aksi</th>
@@ -27,6 +28,11 @@
                             @forelse ($layanans as $index => $layanan)
                             <tr class="border-b border-gray-200 hover:bg-gray-50">
                                 <td class="p-3 text-sm text-gray-700">{{ $index + 1 }}</td>
+                                <td class="p-3 text-sm text-gray-700">
+                                    <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">
+                                        {{ $layanan->spesialisasi->nama_spesialisasi ?? 'Umum' }}
+                                    </span>
+                                </td>
                                 <td class="p-3 text-sm text-gray-700 font-bold">{{ $layanan->nama_layanan }}</td>
                                 <td class="p-3 text-sm text-gray-700">Rp {{ number_format($layanan->estimasi_biaya, 0, ',', '.') }}</td>
                                 <td class="p-3 text-sm text-center">
@@ -39,7 +45,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="4" class="p-3 text-center text-gray-500">Belum ada data layanan.</td>
+                                <td colspan="5" class="p-3 text-center text-gray-500">Belum ada data layanan.</td>
                             </tr>
                             @endforelse
                         </tbody>

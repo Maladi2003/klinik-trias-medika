@@ -19,18 +19,23 @@
                 <form action="{{ route('jadwal.store') }}" method="POST">
                     @csrf 
 
+                    <!-- Pilih Dokter -->
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">Pilih Dokter</label>
                         <select name="dokter_id" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight" required>
                             <option value="">-- Pilih Dokter --</option>
                             @foreach($dokters as $dokter)
+                                @php
+                                    $spec = is_object($dokter->spesialisasi) ? $dokter->spesialisasi->nama_spesialisasi : $dokter->spesialisasi;
+                                @endphp
                                 <option value="{{ $dokter->id }}" {{ old('dokter_id') == $dokter->id ? 'selected' : '' }}>
-                                    {{ $dokter->nama_dokter }} - {{ $dokter->spesialisasi }}
+                                    {{ $dokter->nama_dokter }} {{ $spec ? '('.$spec.')' : '' }}
                                 </option>
                             @endforeach
                         </select>
                     </div>
 
+                    <!-- Hari Praktik -->
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2">Hari Praktik</label>
                         <select name="hari" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight" required>
@@ -41,6 +46,7 @@
                         </select>
                     </div>
 
+                    <!-- Jam Mulai & Selesai -->
                     <div class="flex space-x-4 mb-4">
                         <div class="w-1/2">
                             <label class="block text-gray-700 text-sm font-bold mb-2">Jam Mulai</label>
@@ -49,18 +55,18 @@
                         <div class="w-1/2">
                             <label class="block text-gray-700 text-sm font-bold mb-2">Jam Selesai</label>
                             <input type="time" name="jam_selesai" id="jam_selesai" value="{{ old('jam_selesai') }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight" required>
-                            <!-- Wadah pesan error real-time (disembunyikan secara default) -->
                             <p id="error_jam_realtime" class="text-red-500 text-xs italic mt-1 hidden">Jam selesai tidak boleh lebih cepat atau sama dengan jam mulai!</p>
                         </div>
                     </div>
 
+                    <!-- Kuota Pasien -->
                     <div class="mb-6">
                         <label class="block text-gray-700 text-sm font-bold mb-2">Kuota Pasien</label>
                         <input type="number" name="kuota_pasien" value="{{ old('kuota_pasien') }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight" placeholder="Contoh: 20" min="1" required>
                     </div>
 
+                    <!-- Tombol Aksi -->
                     <div class="flex items-center justify-between">
-                        <!-- Tombol simpan diberikan ID agar bisa dikunci oleh JavaScript -->
                         <button id="btn_simpan" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-all" type="submit">
                             Simpan Jadwal
                         </button>
@@ -74,7 +80,7 @@
         </div>
     </div>
 
-    <!-- Script JavaScript untuk Validasi Real-time -->
+    <!-- Script JavaScript Validasi Jam -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const jamMulai = document.getElementById('jam_mulai');
@@ -85,13 +91,11 @@
             function validasiJam() {
                 if (jamMulai.value && jamSelesai.value) {
                     if (jamSelesai.value <= jamMulai.value) {
-                        // Tampilkan pesan error dan matikan tombol
                         errorJam.classList.remove('hidden');
                         btnSimpan.disabled = true;
                         btnSimpan.classList.add('opacity-50', 'cursor-not-allowed');
                         jamSelesai.classList.add('border-red-500');
                     } else {
-                        // Sembunyikan pesan error dan aktifkan tombol
                         errorJam.classList.add('hidden');
                         btnSimpan.disabled = false;
                         btnSimpan.classList.remove('opacity-50', 'cursor-not-allowed');
@@ -100,7 +104,6 @@
                 }
             }
 
-            // Jalankan fungsi validasi setiap kali angka jam diubah
             jamMulai.addEventListener('input', validasiJam);
             jamSelesai.addEventListener('input', validasiJam);
         });

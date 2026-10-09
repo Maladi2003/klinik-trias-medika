@@ -9,6 +9,14 @@ class Spesialisasi extends Model
 {
     use HasFactory;
 
-    // Baris ajaib ini yang akan mengizinkan data masuk ke database
+    // mengizinkan data masuk ke database
     protected $fillable = ['nama_spesialisasi'];
+
+    /**
+     * Relasi ke model Layanan (Satu spesialisasi/poli memiliki banyak layanan)
+     */
+    public function layanans()
+    {
+        return $this->hasMany(Layanan::class, 'spesialisasi_id');
+    }
 }

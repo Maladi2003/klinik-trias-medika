@@ -7,7 +7,7 @@ use App\Models\Pasien;
 use App\Models\Jadwal;
 use App\Models\Layanan;
 use Illuminate\Http\Request;
-use Carbon\Carbon; // Tambahkan ini untuk memanipulasi tanggal
+use Carbon\Carbon;
 
 class JanjiTemuController extends Controller
 {

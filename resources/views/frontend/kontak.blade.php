@@ -155,8 +155,6 @@
                                 <select class="w-full h-12 px-4 rounded-xl bg-surface-container-low focus:bg-surface-container-lowest text-on-surface font-body-md text-body-md border border-transparent focus:border-primary focus:outline-none appearance-none cursor-pointer pr-10 transition-all" id="topicSelect" required>
                                     <option disabled selected value="">Pilih Topik Layanan Kesehatan</option>
                                     <option value="BPJS Kesehatan">Informasi Layanan BPJS Kesehatan</option>
-                                    <option value="Jadwal Dokter">Jadwal Dokter &amp; Reservasi Poli</option>
-                                    <option value="Poli Gigi">Poli Gigi &amp; Kesehatan Mulut</option>
                                     <option value="Lainnya">Pertanyaan Umum Lainnya</option>
                                 </select>
                                 <div class="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant flex items-center">

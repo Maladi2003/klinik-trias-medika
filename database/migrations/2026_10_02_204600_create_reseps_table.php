@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('rekam_medis_id')->constrained('rekam_medis')->onDelete('cascade');
             $table->foreignId('obat_id')->constrained('obats')->onDelete('cascade');
             $table->integer('jumlah');
-            $table->string('dosis'); // contoh: 3x1 sesudah makan
+            $table->string('dosis');
             $table->timestamps();
         });
     }
