@@ -4,22 +4,29 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     
-    <!-- 1. PRELOAD HERO IMAGE (SATU-SATUNYA PRIORITAS UTAMA DI HEAD) -->
-    <link rel="preload" as="image" href="{{ asset('images/hero-klinik.webp') }}" fetchpriority="high">
+    <!-- 1. PRELOAD HERO IMAGE (HANYA AKTIF DI BERANDA) -->
+    @if(request()->is('/'))
+    <link rel="preload" as="image" href="{{ asset('images/hero-klinik.webp') }}" type="image/webp" fetchpriority="high">
+    @endif
 
-    <!-- 2. SEO & CANONICAL -->
+    <!-- 2. SEO & CANONICAL DINAMIS -->
     <title>Klinik Trias Medika - Pelayanan Kesehatan Terpadu Pasar Kemis</title>
     <meta name="description" content="Klinik Pratama Trias Medika menyediakan pendaftaran online, jadwal dokter, pelayanan UGD 24 jam, serta BPJS Kesehatan terpercaya di Pasar Kemis Tangerang.">
-    <link rel="canonical" href="https://klinik-trias-medika.freedev.app/">
+    <link rel="canonical" href="{{ url()->current() }}">
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
-    <!-- 3. INLINE CSS (GABUNGKAN LANGSUNG TANPA MENUNGGU EXTERNAL REQUEST) -->
+    <!-- 3. INLINE CSS (MENGELIMINASI RENDER BLOCKING) -->
     <style>
         @layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
-        <?php echo file_get_contents(public_path('css/app.css')); ?>
+        <?php 
+            $cssPath = public_path('css/app.css');
+            if (file_exists($cssPath)) {
+                echo file_get_contents($cssPath);
+            }
+        ?>
     </style>
 
-    <!-- 4. FONT & ASYNC CSS (DITARUH SETELAH INLINE CSS) -->
+    <!-- 4. FONT & ASYNC ICONS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&display=swap" media="print" onload="this.media='all'">
