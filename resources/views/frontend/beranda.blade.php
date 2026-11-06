@@ -24,8 +24,8 @@
                             <span class="material-symbols-outlined text-outline ml-3.5 mr-2 text-[24px]" aria-hidden="true">search</span>
                             <input class="w-full bg-transparent py-3 text-body-md text-on-surface placeholder:text-outline focus:outline-none" name="q" value="{{ request('q') }}" id="searchServiceInput" placeholder="Cari Dokter atau Spesialis..." type="text" aria-label="Cari Dokter atau Spesialis" required>
                             <button class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg hover:bg-primary-container shadow-[0_4px_14px_rgba(0,105,72,0.22)] transition-all flex-shrink-0 cursor-pointer" type="submit" aria-label="Tombol Cari">
-                                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">search</span><span class="hidden sm:inline">Cari</span>
-                            </button>
+    <span class="material-symbols-outlined text-[18px] inline-block w-[18px] h-[18px] leading-none" aria-hidden="true">search</span><span class="hidden sm:inline">Cari</span>
+</button>
                         </form>
                     </div>
                     
@@ -91,7 +91,7 @@
                 <!-- Gambar 4 -->
                 <div class="p-8 rounded-2xl bg-surface-container-low flex flex-col items-center text-center justify-between gap-6 group hover:bg-surface-container-lowest hover:shadow-md transition-all duration-300 border border-outline-variant/30">
                     <div class="h-16 flex items-center justify-center">
-                        <img src="{{ asset('images/ibi.webp') }}" alt="Afiliasi Ikatan Bidan Indonesia" width="160" height="60" loading="lazy" class="h-14 w-auto object-contain transition-transform group-hover:scale-105">
+                        <img src="{{ asset('images/ibi.webp') }}" alt="Afiliasi Ikatan Bidan Indonesia" width="120" height="85" loading="lazy" class="h-14 w-auto object-contain transition-transform group-hover:scale-105">
                     </div>
                     <div class="flex flex-col items-center"><h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Ikatan Bidan Indonesia</h3></div>
                 </div>
