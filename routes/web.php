@@ -108,4 +108,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('spesialisasi', SpesialisasiController::class);
 });
 
+Route::get('/google0f8d1a4591fe8521.html', function () {
+    return response()->file(public_path('google0f8d1a4591fe8521.html'));
+});
 require __DIR__.'/auth.php';
