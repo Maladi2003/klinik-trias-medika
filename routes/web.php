@@ -118,4 +118,8 @@ Route::get('/sitemap.xml', function () {
 Route::get('/robots.txt', function () {
     return response()->file(public_path('robots.txt'));
 });
+Route::get('/', function () {
+    return response(view('index'))
+        ->header('Cache-Control', 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=59');
+});
 require __DIR__.'/auth.php';

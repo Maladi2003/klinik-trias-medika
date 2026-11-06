@@ -28,6 +28,18 @@
       "dest": "/public/favicon.ico"
     },
     {
+      "src": "/robots.txt",
+      "dest": "/robots.txt"
+    },
+    {
+      "src": "/sitemap.xml",
+      "dest": "/sitemap.xml"
+    },
+    {
+      "src": "/google0f8d1a4591fe8521.html",
+      "dest": "/google0f8d1a4591fe8521.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/api/index.php"
     }
