@@ -59,9 +59,37 @@ return [
             'prefix_indexes' => true,
             'strict' => true,
             'engine' => null,
-            'options' => extension_loaded('pdo_mysql') ? array_filter([
-                Mysql::ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
+            'options' => extension_loaded('pdo_mysql') ? (function () {
+                $ca = env('MYSQL_ATTR_SSL_CA');
+                
+                $sslCaConst = defined('Pdo\Mysql::ATTR_SSL_CA') 
+                    ? Mysql::ATTR_SSL_CA 
+                    : PDO::MYSQL_ATTR_SSL_CA;
+
+                $sslVerifyConst = defined('Pdo\Mysql::ATTR_SSL_VERIFY_SERVER_CERT') 
+                    ? Mysql::ATTR_SSL_VERIFY_SERVER_CERT 
+                    : PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT;
+
+                // 1. Jika MYSQL_ATTR_SSL_CA diisi path file valid (seperti di Vercel: /etc/ssl/certs/ca-certificates.crt)
+                if (!empty($ca) && is_string($ca) && file_exists($ca)) {
+                    return [
+                        $sslCaConst => $ca,
+                    ];
+                }
+
+                // 2. Cek file CA bawaan Laragon Windows jika ada
+                if (file_exists('C:\laragon\etc\ssl\cacert.pem')) {
+                    return [
+                        $sslCaConst => 'C:\laragon\etc\ssl\cacert.pem',
+                    ];
+                }
+
+                // 3. Paksa mode SSL aktif di Windows tanpa memblokir koneksi
+                return [
+                    $sslCaConst => '',
+                    $sslVerifyConst => false,
+                ];
+            })() : [],
         ],
 
         'mariadb' => [
@@ -110,8 +138,6 @@ return [
             'charset' => env('DB_CHARSET', 'utf8'),
             'prefix' => '',
             'prefix_indexes' => true,
-            // 'encrypt' => env('DB_ENCRYPT', 'yes'),
-            // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
 
     ],
