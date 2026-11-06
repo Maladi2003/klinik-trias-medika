@@ -15,7 +15,36 @@
     <link rel="canonical" href="{{ url()->current() }}">
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
-    <!-- 3. INLINE CSS (MENGELIMINASI RENDER BLOCKING) -->
+    <!-- 3. PRELOAD FONT LOKAL (CACHE VERCEL EDGE 1 TAHUN) -->
+    <link rel="preload" href="/fonts/PlusJakartaSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/PlusJakartaSans-Bold.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- 4. DEKLARASI FONT-FACE LOKAL -->
+    <style>
+      @font-face {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/PlusJakartaSans-Regular.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url('/fonts/PlusJakartaSans-SemiBold.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url('/fonts/PlusJakartaSans-Bold.woff2') format('woff2');
+      }
+    </style>
+
+    <!-- 5. INLINE CSS UTAMA (SUDAH DITUTUP TAG DENGAN BENAR) -->
     <style>
         @layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
         <?php 
@@ -26,16 +55,10 @@
         ?>
     </style>
 
-    <!-- FONT & OPTIMIZED MATERIAL SYMBOLS -->
-<!-- 1. PRECONNECT -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<!-- 2. PLUS JAKARTA SANS (TEKS UTUH & MEWAH - BOBOT 400, 600, 700) -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
-
-<!-- 3. MATERIAL SYMBOLS (KHUSUS IKON - SUBSET RINGAN ~15 KB) -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&text=search%2Cgroups%2Cstar%2Cmedical_services%2Chealth_and_safety%2Carrow_circle_right%2Cverified%2Cschedule%2Ccall%2Cchat%2Csupport_agent%2Clocation_on%2Cmap%2Cnorth_east%2Ccalendar_month%2Cperson%2Cmenu%2Cclose%2Cexpand_more%2Cunfold_more%2Carrow_drop_down%2Cfilter_alt%2Ctune&display=swap" media="print" onload="this.media='all'">
+    <!-- 6. MATERIAL SYMBOLS (IKON ONLY VIA SUBSET CDN ~15 KB) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&text=search%2Cgroups%2Cstar%2Cmedical_services%2Chealth_and_safety%2Carrow_circle_right%2Cverified%2Cschedule%2Ccall%2Cchat%2Csupport_agent%2Clocation_on%2Cmap%2Cnorth_east%2Ccalendar_month%2Cperson%2Cmenu%2Cclose%2Cexpand_more%2Cunfold_more%2Carrow_drop_down%2Cfilter_alt%2Ctune&display=swap" media="print" onload="this.media='all'">
 </head>
 <body class="bg-surface font-body-md text-body-md text-on-surface antialiased">
 
