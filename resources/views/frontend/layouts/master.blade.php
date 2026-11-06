@@ -27,11 +27,11 @@
     </style>
 
     <!-- FONT & OPTIMIZED MATERIAL SYMBOLS -->
-<!-- 1. PRECONNECT GOOGLE FONTS -->
+<!-- 1. PRECONNECT -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<!-- 2. PLUS JAKARTA SANS (FONT UTUH & RINGAN - HANYA WEIGHT 400, 600, 700) -->
+<!-- 2. PLUS JAKARTA SANS (TEKS UTUH & MEWAH - BOBOT 400, 600, 700) -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
 
 <!-- 3. MATERIAL SYMBOLS (KHUSUS IKON - SUBSET RINGAN ~15 KB) -->
