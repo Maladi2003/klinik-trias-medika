@@ -111,4 +111,11 @@ Route::middleware('auth')->group(function () {
 Route::get('/google0f8d1a4591fe8521.html', function () {
     return response()->file(public_path('google0f8d1a4591fe8521.html'));
 });
+Route::get('/sitemap.xml', function () {
+    return response()->file(public_path('sitemap.xml'));
+});
+
+Route::get('/robots.txt', function () {
+    return response()->file(public_path('robots.txt'));
+});
 require __DIR__.'/auth.php';

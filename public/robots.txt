@@ -6,4 +6,4 @@ Disallow: /password/
 Disallow: /storage/
 Allow: /
 
-Sitemap: https://kliniktriasmedika.freedev.app/sitemap.xml
+Sitemap: https://klinik-trias-medika.vercel.app/sitemap.xml

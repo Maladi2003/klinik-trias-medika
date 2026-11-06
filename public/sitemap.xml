@@ -1,26 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Halaman Utama -->
-  <url>
-    <loc>https://kliniktriasmedika.com/</loc>
-    <lastmod>2026-10-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-  
-  <!-- Halaman Pendaftaran Mandiri Pasien -->
-  <url>
-    <loc>https://kliniktriasmedika.com/pendaftaran</loc>
-    <lastmod>2026-10-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Halaman Jadwal Dokter -->
-  <url>
-    <loc>https://kliniktriasmedika.com/jadwal-dokter</loc>
-    <lastmod>2026-10-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
+    <!-- 1. Beranda -->
+    <url>
+        <loc>https://klinik-trias-medika.vercel.app/</loc>
+        <lastmod>2026-11-06</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <!-- 2. Jadwal Dokter -->
+    <url>
+        <loc>https://klinik-trias-medika.vercel.app/jadwal-dokter</loc>
+        <lastmod>2026-11-06</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- 3. Layanan & Biaya -->
+    <url>
+        <loc>https://klinik-trias-medika.vercel.app/layanan-biaya</loc>
+        <lastmod>2026-11-06</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <!-- 4. Kontak -->
+    <url>
+        <loc>https://klinik-trias-medika.vercel.app/kontak</loc>
+        <lastmod>2026-11-06</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <!-- 5. Buat Janji Temu -->
+    <url>
+        <loc>https://klinik-trias-medika.vercel.app/buat-janji</loc>
+        <lastmod>2026-11-06</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
 </urlset>
