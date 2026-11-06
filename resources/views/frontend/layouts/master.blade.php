@@ -26,7 +26,7 @@
         ?>
     </style>
 
-    <!-- MATERIAL SYMBOLS (KHUSUS IKON SUBSET CDN ~15 KB) -->
+    <!-- MATERIAL SYMBOLS (IKON SUBSET PRESISI ~15 KB) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&text=search,groups,star,medical_services,health_and_safety,arrow_circle_right,verified,schedule,call,chat,support_agent,location_on,map,north_east,calendar_month,person,menu,close,expand_more,unfold_more,arrow_drop_down,filter_alt,tune&display=swap" media="print" onload="this.media='all'">
