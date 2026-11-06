@@ -4,18 +4,18 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     
-    <!-- PRELOAD HERO IMAGE (BERANDA ONLY) -->
+    <!-- 1. PRELOAD HERO IMAGE PRESISI (BERANDA ONLY) -->
     @if(request()->is('/'))
     <link rel="preload" as="image" href="{{ asset('images/hero-klinik.webp') }}" type="image/webp" fetchpriority="high">
     @endif
 
-    <!-- SEO & CANONICAL -->
+    <!-- 2. SEO & CANONICAL -->
     <title>Klinik Trias Medika - Pelayanan Kesehatan Terpadu Pasar Kemis</title>
     <meta name="description" content="Klinik Pratama Trias Medika menyediakan pendaftaran online, jadwal dokter, pelayanan UGD 24 jam, serta BPJS Kesehatan terpercaya di Pasar Kemis Tangerang.">
     <link rel="canonical" href="{{ url()->current() }}">
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
-    <!-- INLINE ALL CSS (TAILWIND & PLUS JAKARTA SANS LOKAL) -->
+    <!-- 3. INLINE CSS (TAILWIND & PLUS JAKARTA SANS LOKAL) -->
     <style>
         @layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
         <?php 
@@ -26,7 +26,7 @@
         ?>
     </style>
 
-    <!-- MATERIAL SYMBOLS SUBSET ASYNC (~15 KiB ASLI PRESISI) -->
+    <!-- 4. MATERIAL SYMBOLS SUBSET ASYNC (MEMOTONG UKURAN DARI 276 KB KE ~15 KB) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&text=search,groups,star,medical_services,health_and_safety,arrow_circle_right,verified,schedule,call,chat,support_agent,location_on,map,north_east,calendar_month,person,menu,close,expand_more,unfold_more,arrow_drop_down,filter_alt,tune,event&display=swap" media="print" onload="this.media='all'">

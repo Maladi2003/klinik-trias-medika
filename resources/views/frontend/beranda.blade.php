@@ -75,7 +75,14 @@
                 <!-- Gambar 2 -->
                 <div class="p-8 rounded-2xl bg-surface-container-low flex flex-col items-center text-center justify-between gap-6 group hover:bg-surface-container-lowest hover:shadow-md transition-all duration-300 border border-outline-variant/30">
                     <div class="h-16 flex items-center justify-center">
-                        <img src="{{ asset('images/bpjs.webp') }}" alt="Mitra Resmi BPJS Kesehatan" width="160" height="60" loading="lazy" class="h-14 w-auto object-contain transition-transform group-hover:scale-105">
+                        <img 
+    src="{{ asset('images/bpjs.webp') }}" 
+    alt="Mitra Resmi BPJS Kesehatan" 
+    width="140" 
+    height="56" 
+    loading="lazy" 
+    class="h-14 w-auto object-contain transition-transform group-hover:scale-105"
+>
                     </div>
                     <div class="flex flex-col items-center"><h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">BPJS Kesehatan</h3></div>
                 </div>
