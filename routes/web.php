@@ -24,7 +24,8 @@ use Carbon\Carbon;
 
 // --- RUTE PUBLIK / FRONTEND ---
 Route::get('/', function () {
-    return view('frontend.beranda');
+    return response(view('frontend.beranda'))
+        ->header('Cache-Control', 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=59');
 });
 
 Route::get('/buat-janji', [BookingController::class, 'create'])->name('booking.create');
@@ -111,6 +112,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/google0f8d1a4591fe8521.html', function () {
     return response()->file(public_path('google0f8d1a4591fe8521.html'));
 });
+
 Route::get('/sitemap.xml', function () {
     return response()->file(public_path('sitemap.xml'));
 });
@@ -118,8 +120,5 @@ Route::get('/sitemap.xml', function () {
 Route::get('/robots.txt', function () {
     return response()->file(public_path('robots.txt'));
 });
-Route::get('/', function () {
-    return response(view('index'))
-        ->header('Cache-Control', 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=59');
-});
+
 require __DIR__.'/auth.php';
