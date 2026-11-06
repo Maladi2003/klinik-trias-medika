@@ -30,6 +30,8 @@
 
 /* Konfigurasi Warna & Font Kustom Klinik Trias Medika */
 @theme {
+    --font-sans: "Plus Jakarta Sans", sans-serif;
+
     --color-primary: #006948;
     --color-on-primary: #ffffff;
     --color-primary-container: #00855d;

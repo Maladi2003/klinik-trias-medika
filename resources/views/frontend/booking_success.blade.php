@@ -7,7 +7,8 @@
         <!-- Header Tiket -->
         <div class="text-center pb-8 border-b border-dashed border-outline-variant/40">
             <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-container/60 text-primary font-label-md font-bold text-sm mb-3">
-                <span class="material-symbols-outlined text-lg">check_circle</span>
+                <!-- IKON: check_circle -->
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
                 Pendaftaran Berhasil Terkonfirmasi
             </span>
             <h1 class="text-2xl md:text-3xl font-bold text-on-surface">Klinik Pratama Trias Medika</h1>
@@ -58,7 +59,7 @@
             </div>
         </div>
 
-        <!-- QR Code Dinamis Tiket Antrean (Otomatis & Unik) -->
+        <!-- QR Code Tiket Antrean -->
         <div class="my-8 p-6 bg-surface-container-low rounded-2xl border border-outline-variant/30 text-center flex flex-col items-center">
             <span class="font-bold text-on-surface text-base mb-1">QR Code Tiket Antrean</span>
             <p class="text-xs text-outline mb-4">Tunjukkan QR Code ini kepada resepsionis klinik saat kedatangan untuk verifikasi nomor antrean.</p>
@@ -71,7 +72,8 @@
         <!-- Tombol Aksi -->
         <div class="mt-8 flex flex-col sm:flex-row gap-4">
             <a href="{{ route('booking.pdf', $janji->id) }}" class="flex-1 py-3.5 px-6 rounded-xl bg-primary text-on-primary font-bold text-center shadow-lg hover:bg-primary-container transition-all flex items-center justify-center gap-2">
-                <span class="material-symbols-outlined">download</span>
+                <!-- IKON: download -->
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
                 Download Tiket PDF
             </a>
             <a href="/" class="py-3.5 px-6 rounded-xl border border-outline-variant/40 text-on-surface font-bold text-center hover:bg-surface-container-low transition-all">
