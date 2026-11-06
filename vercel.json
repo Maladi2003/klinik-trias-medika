@@ -3,7 +3,7 @@
   "outputDirectory": "public",
   "functions": {
     "api/index.php": {
-      "runtime": "vercel-php@0.7.2"
+      "runtime": "vercel-php@0.7.4"
     }
   },
   "routes": [
@@ -33,7 +33,6 @@
     }
   ],
   "env": {
-    "PHP_VERSION": "8.2",
     "APP_CONFIG_CACHE": "/tmp/config.php",
     "APP_EVENTS_CACHE": "/tmp/events.php",
     "APP_PACKAGES_CACHE": "/tmp/packages.php",
