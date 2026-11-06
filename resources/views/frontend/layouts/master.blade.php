@@ -15,7 +15,7 @@
     <link rel="canonical" href="{{ url()->current() }}">
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
-    <!-- INLINE ALL CSS (TAILWIND, PLUS JAKARTA SANS, & MATERIAL SYMBOLS LOKAL) -->
+    <!-- INLINE ALL CSS (TAILWIND & PLUS JAKARTA SANS LOKAL) -->
     <style>
         @layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
         <?php 
@@ -25,6 +25,11 @@
             }
         ?>
     </style>
+
+    <!-- MATERIAL SYMBOLS CDN ASYNC (IKON 100% MUNCUL & ZERO RENDER BLOCKING) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&display=swap" media="print" onload="this.media='all'">
 </head>
 <body class="bg-surface font-body-md text-body-md text-on-surface antialiased">
 
