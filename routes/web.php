@@ -28,9 +28,13 @@ Route::get('/', function () {
 });
 
 Route::get('/buat-janji', [BookingController::class, 'create'])->name('booking.create');
-Route::post('/buat-janji', [BookingController::class, 'store'])->name('booking.store');
 
-// Rute Tampilan Bukti Booking & Download Invoice PDF
+// Proteksi Rate Limiting: Membatasi maksimal 5 kali submit per 1 menit per Alamat IP
+Route::post('/buat-janji', [BookingController::class, 'store'])
+    ->middleware('throttle:5,1')
+    ->name('booking.store');
+
+// Rute Bukti Booking & Invoice PDF (Menggunakan UUID pada parameter {id})
 Route::get('/booking/sukses/{id}', [BookingController::class, 'success'])->name('booking.success');
 Route::get('/booking/pdf/{id}', [BookingController::class, 'downloadPdf'])->name('booking.pdf');
 
@@ -48,7 +52,7 @@ Route::get('/jadwal-dokter', function (Request $request) {
 
     // 2. Filter Spesialisasi Fleksibel
     if ($request->filled('spesialisasi')) {
-        $spesialis = $request->spesialisasi; // Misal: "Dokter Umum" atau "Umum"
+        $spesialis = $request->spesialisasi;
         $clean = trim(str_replace(['Dokter', 'Poli'], '', $spesialis));
 
         $query->whereHas('dokter', function($q) use ($spesialis, $clean) {
@@ -63,7 +67,6 @@ Route::get('/jadwal-dokter', function (Request $request) {
     }
 
     $jadwals = $query->get();
-    // Ambil seluruh spesialisasi resmi dari database admin
     $spesialisasis = Spesialisasi::all();
 
     return view('frontend.jadwal', compact('jadwals', 'spesialisasis'));

@@ -1,2 +1,9 @@
 User-agent: *
-Disallow:
+Disallow: /admin/
+Disallow: /login
+Disallow: /register
+Disallow: /password/
+Disallow: /storage/
+Allow: /
+
+Sitemap: https://kliniktriasmedika.freedev.app/sitemap.xml

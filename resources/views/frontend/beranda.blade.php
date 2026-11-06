@@ -18,38 +18,44 @@
                         <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">Pelayanan medis cepat, ramah, dan profesional tanpa antre berjam-jam. Dilengkapi dokter berpengalaman, apotek terpadu, dan fasilitas laboratorium modern untuk kesehatan keluarga Anda.</p>
                     </div>
                     
-                    <!-- Search Bar (SUDAH DIPERBAIKI) -->
+                    <!-- Search Bar -->
                     <div class="flex flex-col gap-3 w-full max-w-xl">
-                        <!-- Perhatikan action dan method GET yang ditambahkan di sini -->
                         <form action="{{ route('jadwal') }}" method="GET" class="relative flex items-center p-1.5 rounded-2xl bg-surface-container-lowest shadow-[0_10px_25px_-5px_rgba(0,105,72,0.08)]">
-                            <span class="material-symbols-outlined text-outline ml-3.5 mr-2 text-[24px]">search</span>
-                            <!-- Atribut name="q" sangat penting agar keyword dikirim ke controller -->
-                            <input class="w-full bg-transparent py-3 text-body-md text-on-surface placeholder:text-outline focus:outline-none" name="q" value="{{ request('q') }}" id="searchServiceInput" placeholder="Cari Dokter atau Spesialis..." type="text" required>
-                            <button class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg hover:bg-primary-container shadow-[0_4px_14px_rgba(0,105,72,0.22)] transition-all flex-shrink-0 cursor-pointer" type="submit">
-                                <span class="material-symbols-outlined text-[18px]">search</span><span class="hidden sm:inline">Cari</span>
+                            <span class="material-symbols-outlined text-outline ml-3.5 mr-2 text-[24px]" aria-hidden="true">search</span>
+                            <input class="w-full bg-transparent py-3 text-body-md text-on-surface placeholder:text-outline focus:outline-none" name="q" value="{{ request('q') }}" id="searchServiceInput" placeholder="Cari Dokter atau Spesialis..." type="text" aria-label="Cari Dokter atau Spesialis" required>
+                            <button class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg hover:bg-primary-container shadow-[0_4px_14px_rgba(0,105,72,0.22)] transition-all flex-shrink-0 cursor-pointer" type="submit" aria-label="Tombol Cari">
+                                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">search</span><span class="hidden sm:inline">Cari</span>
                             </button>
                         </form>
                     </div>
                     
                     <!-- Quick Stats -->
                     <div class="pt-4 grid grid-cols-3 gap-3 sm:gap-6 max-w-xl">
-                        <div class="flex flex-col p-4 rounded-2xl bg-surface-container-lowest shadow-[0_2px_8px_rgba(0,0,0,0.03)]"><div class="flex items-center gap-1.5 text-primary"><span class="material-symbols-outlined text-[20px]">groups</span><span class="font-headline-md text-headline-md text-on-surface font-extrabold tracking-tight">15.000+</span></div><span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Pasien Terlayani</span></div>
-                        <div class="flex flex-col p-4 rounded-2xl bg-surface-container-lowest shadow-[0_2px_8px_rgba(0,0,0,0.03)]"><div class="flex items-center gap-1.5 text-primary"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span><span class="font-headline-md text-headline-md text-on-surface font-extrabold tracking-tight">4.9<span class="text-label-md text-outline">/5</span></span></div><span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Rating Kepuasan</span></div>
-                        <div class="flex flex-col p-4 rounded-2xl bg-surface-container-lowest shadow-[0_2px_8px_rgba(0,0,0,0.03)]"><div class="flex items-center gap-1.5 text-primary"><span class="material-symbols-outlined text-[20px]">medical_services</span><span class="font-headline-md text-headline-md text-on-surface font-extrabold tracking-tight">10+</span></div><span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Dokter &amp; Medis</span></div>
+                        <div class="flex flex-col p-4 rounded-2xl bg-surface-container-lowest shadow-[0_2px_8px_rgba(0,0,0,0.03)]"><div class="flex items-center gap-1.5 text-primary"><span class="material-symbols-outlined text-[20px]" aria-hidden="true">groups</span><span class="font-headline-md text-headline-md text-on-surface font-extrabold tracking-tight">15.000+</span></div><span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Pasien Terlayani</span></div>
+                        <div class="flex flex-col p-4 rounded-2xl bg-surface-container-lowest shadow-[0_2px_8px_rgba(0,0,0,0.03)]"><div class="flex items-center gap-1.5 text-primary"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">star</span><span class="font-headline-md text-headline-md text-on-surface font-extrabold tracking-tight">4.9<span class="text-label-md text-outline">/5</span></span></div><span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Rating Kepuasan</span></div>
+                        <div class="flex flex-col p-4 rounded-2xl bg-surface-container-lowest shadow-[0_2px_8px_rgba(0,0,0,0.03)]"><div class="flex items-center gap-1.5 text-primary"><span class="material-symbols-outlined text-[20px]" aria-hidden="true">medical_services</span><span class="font-headline-md text-headline-md text-on-surface font-extrabold tracking-tight">10+</span></div><span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Dokter &amp; Medis</span></div>
                     </div>
                 </div>
                 
-                <!-- Image Visual (SUDAH DIPERBAIKI DENGAN GAMBAR HD) -->
+                <!-- GAMBAR 1: HERO IMAGE (LCP IMAGE) -->
                 <div class="lg:col-span-5 relative flex justify-center">
                     <div class="absolute inset-0 m-auto w-72 h-72 rounded-full bg-primary-fixed/40 blur-3xl -z-10"></div>
                     <div class="relative w-full max-w-md">
                         <div class="relative overflow-hidden rounded-3xl bg-surface-container-lowest shadow-[0_20px_40px_-15px_rgba(0,105,72,0.18)] p-2.5">
                             <div class="rounded-2xl overflow-hidden aspect-[4/5] bg-surface-container relative">
-                                <img alt="Ruang Periksa Dokter Bersih dan Nyaman" class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700" src="{{ asset('hero-klinik.jpg') }}">
+                                <img 
+                                    alt="Ruang Periksa Dokter Bersih dan Nyaman di Klinik Trias Medika" 
+                                    class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700" 
+                                    src="{{ asset('images/hero-klinik.webp') }}" 
+                                    width="562" 
+                                    height="700" 
+                                    fetchpriority="high"
+                                    decoding="sync"
+                                >
                             </div>
                             <div class="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-surface-container-lowest/95 backdrop-blur-md shadow-[0_8px_20px_rgba(0,0,0,0.08)] flex items-center justify-between">
-                                <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary"><span class="material-symbols-outlined text-[20px]">health_and_safety</span></div><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface font-bold leading-tight">Poli Umum &amp; Gigi</span><span class="font-body-sm text-body-sm text-primary font-semibold">Siap Melayani Hari Ini</span></div></div>
-                                <span class="material-symbols-outlined text-primary text-[22px]">arrow_circle_right</span>
+                                <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary"><span class="material-symbols-outlined text-[20px]" aria-hidden="true">health_and_safety</span></div><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface font-bold leading-tight">Poli Umum &amp; Gigi</span><span class="font-body-sm text-body-sm text-primary font-semibold">Siap Melayani Hari Ini</span></div></div>
+                                <span class="material-symbols-outlined text-primary text-[22px]" aria-hidden="true">arrow_circle_right</span>
                             </div>
                         </div>
                     </div>
@@ -58,20 +64,65 @@
         </div>
     </section>
 
-    <!-- SECTION 2: KEMITRAAN & AKREDITASI (TETAP SAMA) -->
+    <!-- SECTION 2: KEMITRAAN & FOTO LAYANAN (BELOW THE FOLD - LAZY LOAD) -->
     <section class="w-full px-6 lg:px-12 py-12 bg-surface">
         <div class="max-w-7xl mx-auto bg-surface-container-lowest rounded-3xl p-8 lg:p-12 shadow-sm">
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-outline-variant/30">
                 <div><h2 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">Afiliasi &amp; Kemitraan Resmi</h2></div>
             </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                <div class="p-8 rounded-2xl bg-surface-container-low flex flex-col items-center text-center justify-between gap-6 group hover:bg-surface-container-lowest hover:shadow-md transition-all duration-300 border border-outline-variant/30"><div class="h-16 flex items-center justify-center"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuwoOfGg3vIT7yIMj1k5RXgERatdrR3fytps--0-yKIrDUbLR5j1wjL35dq2rfshcoKrfu8Po2gbpiNraSAlsmnlEUrpNYLg_vp57Hd2-ZW9qerG3f2SWC_dOt2TU5CZe1e7RA9IZpKVTxI4JZ8809dB6-VMaSd4CrQj7CfnoFz53hU9tIc-AGsabD_Hr04ogxAKzumtKfsNNT26qDCNgGL-jCHgupoExpiYUoYHDudrbsAuR2UbvHuQm5ZeXQgpNTWg" alt="BPJS" class="h-14 w-auto object-contain transition-transform group-hover:scale-105"></div><div class="flex flex-col items-center"><h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">BPJS Kesehatan</h3></div></div>
-                <div class="p-8 rounded-2xl bg-surface-container-low flex flex-col items-center text-center justify-between gap-6 group hover:bg-surface-container-lowest hover:shadow-md transition-all duration-300 border border-outline-variant/30"><div class="h-16 flex items-center justify-center"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH0HD9keEpyPpLEbhTQjw1j549vF_3z707rpDGfszOLhE0pchRlXdf4E17jaTj_DFl4kZ_Y4FG-Chwi2DdLkiJiXbaycHv1PgCwAsPILs7Jt30a6yrVE5jtpE08gj7XzuO4WwTXl3E3oqOunBeBPzdZGHAcY8_S6fyqvuVEMQUGIXts1PiYn6eNGpfC2NnOZYwf0ASNxZvvcK9LAhvjJ4YLyKzXvhVQEZrRIOLVlPo_0znM0pvmXDkxgKLjbyP6-w_uA" alt="GERMAS" class="h-14 w-auto object-contain transition-transform group-hover:scale-105"></div><div class="flex flex-col items-center"><h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">GERMAS Kemenkes RI</h3></div></div>
-                <div class="p-8 rounded-2xl bg-surface-container-low flex flex-col items-center text-center justify-between gap-6 group hover:bg-surface-container-lowest hover:shadow-md transition-all duration-300 border border-outline-variant/30"><div class="h-16 flex items-center justify-center"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4YikmhBc0EZQ0rUF4QYEu9rE8R__0SMo3GdUtArHjGDJEL1fDMv73eoDm272IJgRQ6UlcPLn7S5ittmj-YKcxtHP7CFkKK6lwaNvPdf0UiXo0h6ZL82g5Y2Fjz_EZietEujCR3nQnsIFxqLwjv1TNh6nqJDw7a-krs7IlsaWB5KGZl2SyqCPrY5MsF38_M6R7d1-ZD3x4yj4CB2PNa6s80vDg_PbekpKOWMvVVbXzJMPO4lUpc3a3_WsWM3cItDOPgQ" alt="IBI" class="h-14 w-auto object-contain transition-transform group-hover:scale-105"></div><div class="flex flex-col items-center"><h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Ikatan Bidan Indonesia</h3></div></div>
+                <!-- Gambar 2 -->
+                <div class="p-8 rounded-2xl bg-surface-container-low flex flex-col items-center text-center justify-between gap-6 group hover:bg-surface-container-lowest hover:shadow-md transition-all duration-300 border border-outline-variant/30">
+                    <div class="h-16 flex items-center justify-center">
+                        <img src="{{ asset('images/bpjs.webp') }}" alt="Mitra Resmi BPJS Kesehatan" width="160" height="60" loading="lazy" class="h-14 w-auto object-contain transition-transform group-hover:scale-105">
+                    </div>
+                    <div class="flex flex-col items-center"><h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">BPJS Kesehatan</h3></div>
+                </div>
+
+                <!-- Gambar 3 -->
+                <div class="p-8 rounded-2xl bg-surface-container-low flex flex-col items-center text-center justify-between gap-6 group hover:bg-surface-container-lowest hover:shadow-md transition-all duration-300 border border-outline-variant/30">
+                    <div class="h-16 flex items-center justify-center">
+                        <img src="{{ asset('images/germas.webp') }}" alt="Mitra GERMAS Kemenkes RI" width="160" height="60" loading="lazy" class="h-14 w-auto object-contain transition-transform group-hover:scale-105">
+                    </div>
+                    <div class="flex flex-col items-center"><h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">GERMAS Kemenkes RI</h3></div>
+                </div>
+
+                <!-- Gambar 4 -->
+                <div class="p-8 rounded-2xl bg-surface-container-low flex flex-col items-center text-center justify-between gap-6 group hover:bg-surface-container-lowest hover:shadow-md transition-all duration-300 border border-outline-variant/30">
+                    <div class="h-16 flex items-center justify-center">
+                        <img src="{{ asset('images/ibi.webp') }}" alt="Afiliasi Ikatan Bidan Indonesia" width="160" height="60" loading="lazy" class="h-14 w-auto object-contain transition-transform group-hover:scale-105">
+                    </div>
+                    <div class="flex flex-col items-center"><h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Ikatan Bidan Indonesia</h3></div>
+                </div>
             </div>
+
+            <div class="mt-12 pt-8 border-t border-outline-variant/30">
+                <h2 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight mb-6">Fasilitas &amp; Pelayanan Medis</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Gambar 5 -->
+                    <div class="rounded-2xl overflow-hidden bg-surface-container-low border border-outline-variant/30 p-4 flex flex-col sm:flex-row gap-4 items-center">
+                        <img src="{{ asset('images/dokter-pelayanan.webp') }}" alt="Layanan Dokter Umum dan Gigi Klinik Trias Medika" width="200" height="150" loading="lazy" class="w-full sm:w-40 h-32 object-cover rounded-xl">
+                        <div>
+                            <h3 class="font-title-lg text-title-lg font-bold text-on-surface">Dokter Profesional</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant mt-1">Tim dokter umum, gigi, dan bidan berpengalaman yang siap melayani pasien dengan ramah.</p>
+                        </div>
+                    </div>
+                    <!-- Gambar 6 -->
+                    <div class="rounded-2xl overflow-hidden bg-surface-container-low border border-outline-variant/30 p-4 flex flex-col sm:flex-row gap-4 items-center">
+                        <img src="{{ asset('images/fasilitas-klinik.webp') }}" alt="Fasilitas Ruang Pemeriksaan Steril Klinik Trias Medika" width="200" height="150" loading="lazy" class="w-full sm:w-40 h-32 object-cover rounded-xl">
+                        <div>
+                            <h3 class="font-title-lg text-title-lg font-bold text-on-surface">Fasilitas Steril</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant mt-1">Ruang tunggu ber-AC, laboratorium modern, dan unit farmasi/apotek terintegrasi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 </div>
+
 <script>
     function setSearch(query) {
         const input = document.getElementById('searchServiceInput');

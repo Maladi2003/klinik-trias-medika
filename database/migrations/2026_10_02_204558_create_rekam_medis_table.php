@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('rekam_medis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('janji_temu_id')->constrained('janji_temus')->onDelete('cascade');
+            
+            // Mengubah foreignId menjadi foreignUuid agar presisi dengan UUID tabel janji_temus
+            $table->foreignUuid('janji_temu_id')->constrained('janji_temus')->onDelete('cascade');
+            
             $table->text('keluhan');
             $table->text('diagnosa');
             $table->text('tindakan')->nullable();

@@ -1,3 +1,52 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* Mengarahkan Tailwind v4 untuk memindai seluruh folder views */
+@source "../views";
+
+/* Konfigurasi Warna & Font Kustom Klinik Trias Medika */
+@theme {
+    --color-primary: #006948;
+    --color-on-primary: #ffffff;
+    --color-primary-container: #00855d;
+    --color-on-primary-container: #f5fff7;
+    --color-primary-fixed: #85f8c4;
+    --color-primary-fixed-dim: #68dba9;
+    --color-on-primary-fixed: #002114;
+    --color-on-primary-fixed-variant: #005137;
+
+    --color-secondary: #006c49;
+    --color-on-secondary: #ffffff;
+    --color-secondary-container: #6cf8bb;
+    --color-on-secondary-container: #00714d;
+
+    --color-surface: #faf8ff;
+    --color-on-surface: #131b2e;
+    --color-surface-dim: #d2d9f4;
+    --color-surface-bright: #faf8ff;
+    --color-surface-variant: #dae2fd;
+    --color-on-surface-variant: #3d4a42;
+    --color-surface-container-lowest: #ffffff;
+    --color-surface-container-low: #f2f3ff;
+    --color-surface-container: #eaedff;
+    --color-surface-container-high: #e2e7ff;
+    --color-surface-container-highest: #dae2fd;
+
+    --color-outline: #6d7a72;
+    --color-outline-variant: #bccac0;
+    --color-background: #faf8ff;
+    --color-on-background: #131b2e;
+    --color-error: #ba1a1a;
+    --color-on-error: #ffffff;
+
+    --font-headline-md: "Plus Jakarta Sans", sans-serif;
+    --font-body-lg: "Plus Jakarta Sans", sans-serif;
+    --font-body-sm: "Plus Jakarta Sans", sans-serif;
+    --font-label-md: "Plus Jakarta Sans", sans-serif;
+    --font-headline-xl: "Plus Jakarta Sans", sans-serif;
+    --font-label-lg: "Plus Jakarta Sans", sans-serif;
+    --font-display-lg: "Plus Jakarta Sans", sans-serif;
+    --font-label-sm: "Plus Jakarta Sans", sans-serif;
+    --font-headline-sm: "Plus Jakarta Sans", sans-serif;
+    --font-headline-lg: "Plus Jakarta Sans", sans-serif;
+    --font-body-md: "Plus Jakarta Sans", sans-serif;
+}
