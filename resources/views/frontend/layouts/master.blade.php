@@ -26,10 +26,10 @@
         ?>
     </style>
 
-    <!-- MATERIAL SYMBOLS CDN ASYNC (IKON 100% MUNCUL & ZERO RENDER BLOCKING) -->
+    <!-- MATERIAL SYMBOLS SUBSET ASYNC (~15 KiB ASLI PRESISI) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&display=swap" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&text=search,groups,star,medical_services,health_and_safety,arrow_circle_right,verified,schedule,call,chat,support_agent,location_on,map,north_east,calendar_month,person,menu,close,expand_more,unfold_more,arrow_drop_down,filter_alt,tune,event&display=swap" media="print" onload="this.media='all'">
 </head>
 <body class="bg-surface font-body-md text-body-md text-on-surface antialiased">
 
