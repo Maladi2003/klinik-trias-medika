@@ -27,12 +27,14 @@
     </style>
 
     <!-- FONT & OPTIMIZED MATERIAL SYMBOLS -->
-<!-- 1. FONT UTAMA (PLUS JAKARTA SANS FULL - DESAIN MEWAH & RAPI) -->
+<!-- 1. PRECONNECT -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 
-<!-- 2. MATERIAL SYMBOLS (IKON SAJA - SUBSET RINGAN) -->
+<!-- 2. PLUS JAKARTA SANS (FULL & ASYNC - MENGELIMINASI RENDER BLOCKING) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+
+<!-- 3. MATERIAL SYMBOLS (SUBSET & ASYNC) -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&text=search%2Cgroups%2Cstar%2Cmedical_services%2Chealth_and_safety%2Carrow_circle_right%2Cverified%2Cschedule%2Ccall%2Cchat%2Csupport_agent%2Clocation_on%2Cmap%2Cnorth_east%2Ccalendar_month%2Cperson%2Cmenu%2Cclose%2Cexpand_more%2Cunfold_more%2Carrow_drop_down%2Cfilter_alt%2Ctune&display=swap" media="print" onload="this.media='all'">
 </head>
 <body class="bg-surface font-body-md text-body-md text-on-surface antialiased">
