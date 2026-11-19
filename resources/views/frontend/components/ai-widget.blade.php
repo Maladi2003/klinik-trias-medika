@@ -217,11 +217,38 @@
         background: #065f46;
         transform: translateY(-2px);
     }
-    .trias-ai-typing {
-        font-size: 12px;
-        color: #64748b;
-        padding-left: 36px;
-        font-style: italic;
+    .trias-typing-dots {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 4px 2px;
+    }
+    .trias-typing-dots span {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background-color: #047857;
+        display: inline-block;
+        animation: triasWave 1.3s infinite ease-in-out both;
+    }
+    .trias-typing-dots span:nth-child(1) {
+        animation-delay: -0.32s;
+    }
+    .trias-typing-dots span:nth-child(2) {
+        animation-delay: -0.16s;
+    }
+    .trias-typing-dots span:nth-child(3) {
+        animation-delay: 0s;
+    }
+    @keyframes triasWave {
+        0%, 80%, 100% {
+            transform: translateY(0);
+            opacity: 0.4;
+        }
+        40% {
+            transform: translateY(-6px);
+            opacity: 1;
+        }
     }
 </style>
 
@@ -371,8 +398,21 @@
         const loadingId = 'ai-loading-' + Date.now();
         const loadingEl = document.createElement('div');
         loadingEl.id = loadingId;
-        loadingEl.className = 'trias-ai-typing';
-        loadingEl.textContent = 'Asisten AI sedang menyusun jawaban...';
+        loadingEl.className = 'trias-msg-row-ai';
+        loadingEl.innerHTML = `
+            <div class="trias-msg-badge">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+                </svg>
+            </div>
+            <div class="trias-bubble-ai" aria-label="Asisten AI sedang mengetik">
+                <div class="trias-typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        `;
         container.appendChild(loadingEl);
         container.scrollTop = container.scrollHeight;
 
