@@ -12,6 +12,7 @@ use App\Http\Controllers\LayananController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ResepController;
 use App\Http\Controllers\SpesialisasiController;
+use App\Http\Controllers\AiChatController;
 use App\Models\Jadwal;
 use App\Models\Layanan;
 use App\Models\Pasien;
@@ -21,6 +22,9 @@ use App\Models\Spesialisasi;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+
+// Rute Endpoint AI Chatbot NVIDIA NIM
+Route::post('/ai/chat', [AiChatController::class, 'chat'])->name('ai.chat');
 
 // --- RUTE PUBLIK / FRONTEND ---
 Route::get('/', function () {

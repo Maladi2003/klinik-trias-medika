@@ -191,5 +191,6 @@
             }
         }
     </script>
+@include('frontend.components.ai-widget')
 </body>
 </html>

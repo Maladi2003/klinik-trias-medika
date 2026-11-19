@@ -18,6 +18,11 @@ return [
         'key' => env('POSTMARK_API_KEY'),
     ],
 
+    'nvidia' => [
+    'api_key' => env('NVIDIA_API_KEY'),
+    'model'   => env('NVIDIA_MODEL', 'google/gemma-4-31b-it'),
+    ],
+
     'resend' => [
         'key' => env('RESEND_API_KEY'),
     ],
