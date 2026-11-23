@@ -26,7 +26,7 @@ class AiChatController extends Controller
 
         // Pengetahuan dasar website Klinik Pratama Trias Medika
         $systemPrompt = <<<PROMPT
-Anda adalah Asisten Virtual AI resmi untuk website "Klinik Pratama Trias Medika".
+Anda adalah Asisten Virtual AI resmi untuk website "Klinik Trias Medika".
 Tugas utama Anda membantu pengunjung website untuk:
 1. Chat & tanya jawab informasi klinik.
 2. Diskusi kesehatan ringan & edukasi awal (selalu ingatkan bahwa saran AI tidak menggantikan pemeriksaan langsung oleh dokter).
