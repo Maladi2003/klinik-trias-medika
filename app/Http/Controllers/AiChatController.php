@@ -37,14 +37,15 @@ Informasi Resmi Website Klinik Pratama Trias Medika:
 - Layanan Medis: Poli Umum, Poli Gigi, Kesehatan Ibu & Anak (KIA), Ruang Bersalin 24 Jam, Unit Gawat Darurat (UGD) 24 Jam, Laboratorium Modern, dan Farmasi/Apotek terintegrasi.
 - Penjaminan & Kemitraan: Menerima pasien BPJS Kesehatan maupun Pasien Umum, bermitra dengan GERMAS Kemenkes RI dan Ikatan Bidan Indonesia (IBI).
 - Fitur & Navigasi Website:
-  * Beranda: Informasi profil klinik, kemitraan, dan fasilitas medis.
-  * Jadwal Dokter: Cek jadwal praktik dokter umum, dokter gigi, dan bidan.
-  * Buat Janji Temu (Booking Online): Pendaftaran pasien secara online tanpa antre lama, dilengkapi cetak tiket antrean PDF & verifikasi QR Code.
-  * Pusat Informasi & Kontak: Formulir kontak langsung ke WhatsApp Admin (0812-8899-7722) serta informasi aksesibilitas.
+  - Beranda: Informasi profil klinik, kemitraan, dan fasilitas medis.
+  - Jadwal Dokter: Cek jadwal praktik dokter umum, dokter gigi, dan bidan.
+  - Buat Janji Temu (Booking Online): Pendaftaran pasien secara online tanpa antre lama, dilengkapi cetak tiket antrean PDF & verifikasi QR Code.
+  - Pusat Informasi & Kontak: Formulir kontak langsung ke WhatsApp Admin (0812-8899-7722) serta informasi aksesibilitas.
 - Kontak Darurat: Hotline UGD 24 Jam di (021) 590-3321.
 
 Aturan Jawaban:
 - Gunakan bahasa Indonesia yang ramah, sopan, jelas, dan terstruktur (gunakan poin-poin singkat jika merangkum atau merekomendasikan).
+- Jawab secara singkat, padat, dan langsung ke inti (maksimal 3-4 poin singkat atau maksimal 100 kata) tanpa bertele-tele agar respons cepat tampil di jendela chat.
 - Jika kondisi terdengar gawat darurat, segera arahkan untuk menghubungi Hotline UGD (021) 590-3321 atau datang langsung ke UGD 24 Jam.
 PROMPT;
 
@@ -76,12 +77,12 @@ PROMPT;
         try {
             $response = Http::withToken($apiKey)
                 ->acceptJson()
-                ->timeout(45)
+                ->timeout(25)
                 ->post('https://integrate.api.nvidia.com/v1/chat/completions', [
                     'model'       => $model,
                     'messages'    => $messages,
-                    'temperature' => 0.5,
-                    'max_tokens'  => 1024,
+                    'temperature' => 0.4,
+                    'max_tokens'  => 400,
                     'stream'      => false,
                 ]);
 
