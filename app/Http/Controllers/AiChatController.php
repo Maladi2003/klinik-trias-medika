@@ -79,11 +79,14 @@ PROMPT;
                 ->acceptJson()
                 ->timeout(25)
                 ->post('https://integrate.api.nvidia.com/v1/chat/completions', [
-                    'model'       => $model,
-                    'messages'    => $messages,
-                    'temperature' => 0.4,
-                    'max_tokens'  => 400,
-                    'stream'      => false,
+                    'model'                => $model,
+                    'messages'             => $messages,
+                    'temperature'          => 0.4,
+                    'max_tokens'           => 1024,
+                    'stream'               => false,
+                    'chat_template_kwargs' => [
+                        'enable_thinking' => false,
+                    ],
                 ]);
 
             if ($response->failed()) {
@@ -97,11 +100,21 @@ PROMPT;
                 ], 502);
             }
 
-            $reply = $response->json('choices.0.message.content')
-                ?? 'Maaf, saya belum dapat menghasilkan jawaban saat ini.';
+            $content = $response->json('choices.0.message.content');
 
-            // Bersihkan tag penalaran internal jika model menyertakannya
-            $reply = preg_replace('/<think>.*?<\/think>/s', '', $reply);
+            if (empty($content)) {
+                Log::warning('NVIDIA Empty Content Response', [
+                    'model' => $model,
+                    'body'  => $response->json(),
+                ]);
+
+                return response()->json([
+                    'reply' => 'Maaf, saya belum dapat menghasilkan jawaban saat ini.'
+                ]);
+            }
+
+            // Bersihkan tag penalaran internal jika model masih menyertakannya
+            $reply = preg_replace('/<think>.*?<\/think>/s', '', $content);
 
             return response()->json([
                 'reply' => trim($reply),
