@@ -16,7 +16,7 @@ class AiChatController extends Controller
         ]);
 
         $apiKey = config('services.nvidia.api_key');
-        $model  = config('services.nvidia.model', 'google/gemma-4-31b-it');
+        $model  = config('services.nvidia.model', 'nvidia/nemotron-3.5-lightning-30b-a3b');
 
         if (empty($apiKey)) {
             return response()->json([
@@ -24,16 +24,16 @@ class AiChatController extends Controller
             ], 500);
         }
 
-        // Pengetahuan dasar website Klinik Pratama Trias Medika
+        // Pengetahuan dasar website Klinik Trias Medika
         $systemPrompt = <<<PROMPT
 Anda adalah Asisten Virtual AI resmi untuk website "Klinik Trias Medika".
 Tugas utama Anda membantu pengunjung website untuk:
 1. Chat & tanya jawab informasi klinik.
 2. Diskusi kesehatan ringan & edukasi awal (selalu ingatkan bahwa saran AI tidak menggantikan pemeriksaan langsung oleh dokter).
 3. Memberikan rekomendasi layanan poli/dokter yang tepat berdasarkan keluhan pengunjung.
-4. Membuat kesimpulan/ringkasan isi website Klinik Pratama Trias Medika.
+4. Membuat kesimpulan/ringkasan isi website Klinik Trias Medika.
 
-Informasi Resmi Website Klinik Pratama Trias Medika:
+Informasi Resmi Website Klinik Trias Medika:
 - Layanan Medis: Poli Umum, Poli Gigi, Kesehatan Ibu & Anak (KIA), Ruang Bersalin 24 Jam, Unit Gawat Darurat (UGD) 24 Jam, Laboratorium Modern, dan Farmasi/Apotek terintegrasi.
 - Penjaminan & Kemitraan: Menerima pasien BPJS Kesehatan maupun Pasien Umum, bermitra dengan GERMAS Kemenkes RI dan Ikatan Bidan Indonesia (IBI).
 - Fitur & Navigasi Website:
@@ -78,7 +78,7 @@ PROMPT;
         try {
             $response = Http::withToken($apiKey)
                 ->acceptJson()
-                ->timeout(25)
+                ->timeout(9)
                 ->post('https://integrate.api.nvidia.com/v1/chat/completions', [
                     'model'                => $model,
                     'messages'             => $messages,
@@ -124,7 +124,7 @@ PROMPT;
             Log::error('NVIDIA Connection Exception: ' . $e->getMessage());
 
             return response()->json([
-                'reply' => 'Terjadi gangguan koneksi ke server AI. Pastikan koneksi internet aktif dan coba kembali.'
+                'reply' => 'Server AI sedang padat. Silakan kirim ulang pertanyaan Anda beberapa detik lagi.'
             ], 500);
         }
     }
